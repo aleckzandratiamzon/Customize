@@ -148,13 +148,4 @@ class OrderController extends Controller
 
         return redirect()->route('cart')->with('success', 'Order placed successfully!');
     }
-
-    public function totalRevenue()
-    {
-        // Gather order data
-        $orders = Order::all();
-        $total_revenue = $orders->sum('price');
-
-        return view('components.dashboard-card', compact('total_revenue')); // Show seller dashboard
-    }
 }

@@ -575,7 +575,7 @@ function clearSelection() {
     //         document.body.removeChild(link);
     //     });
     // }
-    function saveCanvasToDatabase() {
+function saveCanvasToDatabase() {
     const container = document.getElementById('container');
     const finalPrice = parseFloat($('#finalPrice').text().replace(/[^\d.-]/g, ''));
     const quantity = parseInt(document.getElementById('quantity').value) || 1;
@@ -621,6 +621,25 @@ function clearSelection() {
 
 // Function to save the design
 function saveDesign(container, finalPrice, quantity, productId, productTitle) {
+    // Show a loading SweetAlert with an info icon and custom HTML for loading animation
+    const loadingSwal = Swal.fire({
+        title: 'Processing...',
+        text: 'Please wait while we save your design.',
+        icon: 'info', // Add an info icon
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        showConfirmButton: false, // Hide the OK button
+        html: '<div class="loading-animation" style="text-align: center;">' +
+              '<div class="spinner-border" role="status">' +
+              '<span class="sr-only">Loading...</span>' +
+              '</div>' +
+              '<br />Saving your design...' +
+              '</div>', // Custom loading message
+        onOpen: () => {
+            Swal.showLoading(); // Show loading animation
+        }
+    });
+
     html2canvas(container, {
         allowTaint: true,
         useCORS: true,
@@ -644,6 +663,7 @@ function saveDesign(container, finalPrice, quantity, productId, productTitle) {
         })
         .then(response => response.json())
         .then(data => {
+            loadingSwal.close(); // Close the loading SweetAlert
             console.log('Response Data:', data);
             if (data.success) {
                 console.log('Success message:', data.message);
@@ -654,11 +674,15 @@ function saveDesign(container, finalPrice, quantity, productId, productTitle) {
             }
         })
         .catch(error => {
+            loadingSwal.close(); // Close the loading SweetAlert
             console.error('Error:', error);
             toastr.error('An error occurred while saving the design: ' + error.message);
         });
     });
 }
+
+
+
 
 
 

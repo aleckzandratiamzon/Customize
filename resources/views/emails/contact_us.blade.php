@@ -6,8 +6,8 @@
     <title>Gawang Gamat</title>
 </head>
 <body>
-    <h1>GawangGamat</h1>
-    <p>Thank you for contacting us!</p>
+    <h1>Gawang Gamat</h1>
+    <p>Thank you for contacting us, {{$contact->name}}!</p>
     <p> We appreciate your feedback and will get back to you shortly.</p>
 </body>
 </html>

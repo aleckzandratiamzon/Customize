@@ -24,7 +24,7 @@
               </div>
               @endif
               <h1 class="text-2xl font-semibold text-gray-900 mb-3">Forgot Password</h1>
-              <p class="text-gray-700">Forgot your password? No problem. Just let us know your email address, and we will email you a password reset link.</p>
+              <p class="text-gray-700">Forgot your password? No problem. We'll email you a link to reset your password.</p>
             </div>
             <form class="user" method="POST" action="/new-password">
                 @csrf
@@ -40,22 +40,22 @@
                 @if(isset($error))
                     <div class="alert alert-danger" role="alert">{{ $error }}</div>
                 @endif
-                
+
                 <div class="mb-4">
-                    <input 
-                    value="{{ old('email') }}" 
-                    type="email" 
-                    class="form-control form-control-user block w-full px-4 py-2 border border-gray-300 rounded-lg @error('email') border-red-500 @enderror" 
-                    id="exampleInputEmail" 
-                    aria-describedby="emailHelp" 
-                    placeholder="Enter Email Address..." 
+                    <input
+                    value="{{ old('email') }}"
+                    type="email"
+                    class="form-control form-control-user block w-full px-4 py-2 border border-gray-300 rounded-lg @error('email') border-red-500 @enderror"
+                    id="exampleInputEmail"
+                    aria-describedby="emailHelp"
+                    placeholder="Enter Email Address..."
                     name="email">
                 </div>
-                
+
                 <div>
-                    <input 
-                    type="submit" 
-                    class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" 
+                    <input
+                    type="submit"
+                    class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                     value="Send OTP">
                 </div>
             </form>

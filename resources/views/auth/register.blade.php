@@ -34,9 +34,10 @@
                             <div class="flex flex-wrap gap-4">
                                 <div class="w-full">
                                     <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                                    <input name="name" type="text" id="name" required placeholder="Full Name" oninput="this.value = this.value.replace(/[0-9]/g, '')" maxlength="50"
-                                        value="{{ old('name') }}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
-                                        focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('name') border-red-500 @enderror">
+                                    <input name="name" type="text" id="name" required placeholder="Full Name" oninput="this.value = this.value.replace(/[^a-zA-Z\s.]/g, '').replace(/(\bJr\.|Sr\.)/g, '$1')" maxlength="50"
+                                           value="{{ old('name') }}"
+                                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
+                                           focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm @error('name') border-red-500 @enderror">
                                     @error('name')
                                         <span class="text-red-500 text-sm">{{ $message }}</span>
                                     @enderror

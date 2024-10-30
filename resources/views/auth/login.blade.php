@@ -51,7 +51,7 @@
                 <div class="relative">
                   <input name="password" type="password" id="exampleInputPassword" placeholder="Password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                   <button type="button" id="togglePassword" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-600">
-                    <i class="fas fa-eye"></i>
+                    <i class="fas fa-eye-slash"></i>
                   </button>
                 </div>
                 <div class="text-xs text-gray-500 italic">Never share your password with anyone else.</div>
@@ -95,10 +95,10 @@
       // Toggle password visibility
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Change icon
+        toggleButton.innerHTML = '<i class="fas fa-eye"></i>'; // Change icon
       } else {
         passwordInput.type = 'password';
-        toggleButton.innerHTML = '<i class="fas fa-eye"></i>'; // Change icon
+        toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>'; // Change icon
       }
     }
 

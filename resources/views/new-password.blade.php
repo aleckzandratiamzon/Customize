@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>T-Shirt</title>
+    <title>Gawang Gamat</title>
     <link rel="shortcut icon" href="{{ URL::to('admin_assets/img/title-logo/tabun.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
@@ -42,17 +42,17 @@
                 @csrf
 
                 <div class="mb-4">
-                    <input type="text" class="form-control form-control-user border rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" 
+                    <input type="text" class="form-control form-control-user border rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         id="inputOTP" aria-describedby="otpcode" placeholder="OTP Code" name="otp" @error('otp') style="border: 2px solid #F19E9EFF;" @enderror required>
                 </div>
 
                 <div class="mb-4">
-                    <input type="password" class="form-control form-control-user border rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" 
+                    <input type="password" class="form-control form-control-user border rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         id="exampleInputPassword" aria-describedby="emailHelp" placeholder="Password" name="password" @error('password') style="border: 2px solid #F19E9EFF;" @enderror required>
                 </div>
 
                 <div class="mb-4">
-                    <input type="password" class="form-control form-control-user border rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" 
+                    <input type="password" class="form-control form-control-user border rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         id="exampleInputPasswordConfirmation" aria-describedby="emailHelp" placeholder="Retype Password" name="password_confirmation" @error('password') style="border: 2px solid #F19E9EFF;" @enderror required>
                 </div>
 

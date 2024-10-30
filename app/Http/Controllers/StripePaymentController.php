@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Mail\OrderReceived;
+use Illuminate\Support\Facades\Mail;
 
 
 use Stripe;
@@ -85,6 +87,8 @@ class StripePaymentController extends Controller
                     'barangay' => $validated['barangay'],
                 ]);
                 $order->save();
+                // Send the email after saving the order
+                Mail::to($user->email)->send(new OrderReceived($order));
             }
 
 

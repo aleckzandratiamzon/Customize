@@ -147,7 +147,7 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
 
-        return redirect('login')->with('success', 'Successfully logged out');
+        return redirect('home')->with('success', 'Successfully logged out');
     }
 
     public function profile()

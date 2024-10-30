@@ -10,24 +10,23 @@
                         <div class="material-details">
                             <div class="title title1 title-effect mb-1 title-left">
                                 <h2>Contact Us</h2>
-                                <p class="ms-0 w-100">Your email address will not be published. Required fields are
-                                    marked *</p>
+                                <p class="ms-0 w-100">Your email address will not be published. Required fields are marked *</p>
                             </div>
                         </div>
+
                         <!-- Success message -->
                         @if(Session::has('success'))
                             <div class="alert alert-success">
                                 {{Session::get('success')}}
                             </div>
                         @endif
-                        <form action="{{ route('contact.store') }}" method="POST">
+
+                        <form id="contactForm" action="{{ route('contact.store') }}" method="POST" onsubmit="showLoadingAnimation()">
                             @csrf
                             <div class="row g-4 mt-md-1 mt-2">
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name" value="{{ old('name') }}" id="name" placeholder="Enter Your Name"
-                                        required="">
-                                    <!-- Error -->
+                                    <input type="text" class="form-control {{ $errors->has('name') ? 'error' : '' }}" name="name" id="name" value="{{ old('name') }}" placeholder="Enter Your Name" required>
                                     @if ($errors->has('name'))
                                     <div class="error text-danger">
                                         {{ $errors->first('name') }}
@@ -36,8 +35,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email" id="email" value="{{ old('email') }}" id="email"
-                                    placeholder="Enter Your Email Address" required="">
+                                    <input type="email" class="form-control {{ $errors->has('email') ? 'error' : '' }}" name="email" id="email" value="{{ old('email') }}" placeholder="Enter Your Email Address" required>
                                     @if ($errors->has('email'))
                                     <div class="error text-danger">
                                         {{ $errors->first('email') }}
@@ -46,8 +44,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="phone" class="form-label">Phone</label>
-                                    <input type="number" class="form-control {{ $errors->has('phone') ? 'error' : '' }}" name="phone" id="phone" value="{{ old('phone') }}" id="phone"
-                                        placeholder="Enter Your Phone Number" required="">
+                                    <input type="number" class="form-control {{ $errors->has('phone') ? 'error' : '' }}" name="phone" id="phone" value="{{ old('phone') }}" placeholder="Enter Your Phone Number" required>
                                     @if ($errors->has('phone'))
                                     <div class="error text-danger">
                                         {{ $errors->first('phone') }}
@@ -65,12 +62,13 @@
                                 </div>
 
                                 <div class="col-auto">
-                                    <button name="send" class="btn btn-solid-default" value="value" type="submit">Submit</button>
+                                    <button id="submitButton" name="send" class="btn btn-solid-default" type="submit" style="width: 100px; height: 40px;">Submit</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
+
                 <div class="col-lg-5">
                     <div class="contact-details">
                         <div>
@@ -111,4 +109,40 @@
             </div>
         </div>
     </section>
- @endsection
+
+    <script>
+        function showLoadingAnimation() {
+            const button = document.getElementById('submitButton');
+            button.innerHTML = ''; // Change button text to empty
+            button.disabled = true; // Disable button to prevent multiple clicks
+            button.classList.add('loading'); // Add loading class (optional for styling)
+            button.classList.add('disabled-button');
+        }
+    </script>
+
+    <style>
+        /* Optional: Styling for loading state */
+        .loading {
+            position: relative;
+            padding-right: 1.5em; /* Add padding for spinner */
+        }
+        .loading:after {
+            content: '';
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            width: 1em;
+            height: 1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -0.5em; /* Center horizontally */
+            margin-top: -0.5em; /* Center vertically */
+            animation: spin 0.5s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+@endsection
