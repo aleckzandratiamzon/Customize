@@ -13,19 +13,19 @@ class CategoryController extends Controller
     {
         // Get all categories
         $category = Category::all();
-    
+
         // Fetch products based on selected categories
         $product = Product::when($request->input('category'), function ($query) use ($request) {
             return $query->whereIn('category', $request->input('category')); // Ensure 'category_id' exists in the products table
         }, function ($query) {
             return $query; // If no category is selected, return all products
         })->get();
-    
+
         return view('shop', compact('product', 'category'));
     }
-    
 
-    
+
+
 
     public function index(Request $request)
     {
@@ -34,10 +34,10 @@ class CategoryController extends Controller
         }
         // Determine how many entries to show per page
         $perPage = $request->input('per_page', 10); // Default to 10 if not specified
-    
+
         // Get the search term
         $search = $request->input('search');
-    
+
         // Retrieve categories with pagination and search functionality
         $categories = Category::when($search, function ($query, $search) {
             // Search for both category name and ID
@@ -48,9 +48,9 @@ class CategoryController extends Controller
         })
         ->orderBy('created_at', 'DESC')
         ->paginate($perPage);
-    
+
         return view('admin.category.index', compact('categories', 'search')); // Pass search to view
-    }     
+    }
 
     public function create()
     {
@@ -66,7 +66,7 @@ class CategoryController extends Controller
         // Validate the incoming request
         $validatedData = $request->validate([
             'category_name' => 'required|string|max:255', // Validate the category name
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
         ]);
 
         // Handle image upload

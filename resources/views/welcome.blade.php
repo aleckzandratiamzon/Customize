@@ -259,7 +259,7 @@
             <div class="col-xl-2 col-lg-2 col-6">
                 <div class="product-box">
                     <div class="img-wrapper">
-                        <a href="javascript:void(0)">
+                        <a href="{{route('product-details', $best->id)}}">
                             <img src="{{ asset('images/' . $best->main_image) }}" class="w-100 bg-img blur-up lazyload" alt="{{$best->title}}">
                         </a>
                         <div class="circle-shape"></div>

@@ -98,11 +98,11 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="col-span-2">
+                        {{-- <div class="col-span-2">
                             <x-input-label for="description" :value="__('Tell About Yourself')" class="text-gray-700 font-semibold" />
                             <textarea name="description" id="description" required placeholder="Description" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description') }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="text-red-500 text-sm mt-2" />
-                        </div>
+                        </div> --}}
 
                         <!-- Submit Button -->
                         <div class="col-span-2">

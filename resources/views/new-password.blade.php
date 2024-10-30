@@ -12,7 +12,9 @@
     <div class="flex justify-center">
       <div class="w-full max-w-lg"> <!-- Adjusted the column width -->
         <!-- Logo for login -->
-        <img class="mx-auto mb-4 w-32" src="{{ asset('admin_assets/img/logo/imglogo.png') }}" alt="logo">
+        <a href="/">
+            <img class="mx-auto mb-4 w-32" src="{{ asset('admin_assets/img/logo/imglogo.png') }}" alt="logo">
+        </a>
         <div class="bg-white shadow-lg rounded-lg overflow-hidden my-5">
           <div class="p-6">
             <div class="text-center">

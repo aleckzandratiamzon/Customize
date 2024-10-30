@@ -47,6 +47,9 @@ class ShopController extends Controller
     }
 
     public function customize($id){
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to add items to the cart.');
+        }
         $product=Product::findOrFail($id);
         return view('customize', compact('product'));
     }

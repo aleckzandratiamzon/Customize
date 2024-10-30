@@ -53,8 +53,9 @@ class AuthController extends Controller
                 ->numbers(1)
                 ->uncompromised()],
             'password_confirmation' => 'required',
-            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'digits:11'], // Adjusted for 11-digit phone numbers
-            'description' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', 'digits:11', 'unique:users,phone'], // Adjusted for 11-digit phone numbers
+            'description' => ['nullable', 'string' , 'max:255'],
+
         ])->validate();
 
         // Create user and store the instance
@@ -147,7 +148,7 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
 
-        return redirect('home')->with('success', 'Successfully logged out');
+        return redirect('/')->with('success', 'Successfully logged out');
     }
 
     public function profile()

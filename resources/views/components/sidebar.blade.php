@@ -66,9 +66,10 @@
                         <span class="sr-only">Toggle message panel</span>
                         <i class="bi bi-chat-square-text text-2xl"></i>
                     </a>
-                    <a href="{{ route('order.index')}}" :class="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? 'text-white bg-blue-800' : 'text-black bg-white'">
+                    <a href="{{ route('order.index')}}" :class="(isSidebarOpen && currentSidebarTab == 'notificationsTab') ? 'text-white bg-blue-800' : 'text-black bg-white'"
+                    class="p-2 transition-colors rounded-lg shadow-md hover:bg-blue-800">
                         <span class="sr-only">Toggle order panel</span>
-                        <i class="bi bi-bell text-2xl"></i>
+                        <i class="bi bi-bag-check text-2xl"></i>
                     </a>
                 </div>
 
