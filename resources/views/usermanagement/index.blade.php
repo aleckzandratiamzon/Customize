@@ -161,6 +161,7 @@ function confirmDelete(userId) {
                     // Handle success response
                     Swal.fire('Deleted!', 'The user has been deleted.', 'success').then(() => {
                         location.reload(); // Reload the page or update the UI
+                        window.location.href = '/usermanagement?page=1'; // Redirect to page 1
                     });
                 },
                 error: function(xhr) {

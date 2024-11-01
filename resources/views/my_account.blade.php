@@ -1,6 +1,16 @@
 @extends('layouts.app2')
 
 @section('contents')
+    @if(session('status'))
+        <script>
+            Swal.fire({
+                title: 'Success!',
+                text: "{{ session('status') }}",
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>
+    @endif
     <!-- Breadcrumb section start -->
     <section class="breadcrumb-section section-b-space">
         <ul class="circles">
@@ -110,19 +120,20 @@
                                     </div>
 
                                     <div class="box-account box-info">
-                                        <div class="box-head">
+                                        {{-- <div class="box-head">
                                             <h3>Account Information</h3>
-                                        </div>
+                                        </div> --}}
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="box">
                                                     <div class="box-title">
-                                                        <h4>Contact Information</h4><a href="javascript:void(0)">Edit</a>
+                                                        <h4>Contact Information</h4>
+                                                        {{-- <a href="javascript:void(0)">Edit</a> --}}
                                                     </div>
                                                     <div class="box-content">
                                                         <h6 class="font-light">{{ auth()->user()->name }}</h6>
                                                         <h6 class="font-light">{{ auth()->user()->email }}</h6>
-                                                        <a href="javascript:void(0)">Change Password</a>
+                                                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,131 +181,6 @@
                                             </td>
                                         </tr>
                                         @endforeach
-{{--
-                                        <tr>
-                                            <td>
-                                                <a href="details.php">
-                                                    <img src="assets/images/fashion/product/front/2.jpg" class="blur-up lazyload" alt="">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <p class="mt-0">#125367</p>
-                                            </td>
-                                            <td>
-                                                <p class="fs-6 m-0">Outwear & Coats</p>
-                                            </td>
-                                            <td>
-                                                <p class="danger-button btn btn-sm">Pending</p>
-                                            </td>
-                                            <td>
-                                                <p class="theme-color fs-6">$49.54</p>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <a href="details.php">
-                                                    <img src="assets/images/fashion/product/front/3.jpg" class="blur-up lazyload" alt="">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <p class="m-0">#125948</p>
-                                            </td>
-                                            <td>
-                                                <p class="fs-6 m-0">Men's Sweatshirt</p>
-                                            </td>
-                                            <td>
-                                                <p class="success-button btn btn-sm">Shipped</p>
-                                            </td>
-                                            <td>
-                                                <p class="theme-color fs-6">$49.54</p>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <a href="details.php">
-                                                    <img src="assets/images/fashion/product/front/4.jpg" class="blur-up lazyload" alt="">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <p class="m-0">#127569</p>
-                                            </td>
-                                            <td>
-                                                <p class="fs-6 m-0">Men's Hoodie t-shirt</p>
-                                            </td>
-                                            <td>
-                                                <p class="success-button btn btn-sm">Shipped</p>
-                                            </td>
-                                            <td>
-                                                <p class="theme-color fs-6">$49.54</p>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <a href="details.php">
-                                                    <img src="assets/images/fashion/product/front/5.jpg" class="blur-up lazyload" alt="">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <p class="m-0">#125753</p>
-                                            </td>
-                                            <td>
-                                                <p class="fs-6 m-0">Men's Hoodie t-shirt</p>
-                                            </td>
-                                            <td>
-                                                <p class="danger-button btn btn-sm">Canceled</p>
-                                            </td>
-                                            <td>
-                                                <p class="theme-color fs-6">$49.54</p>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <a href="details.php">
-                                                    <img src="assets/images/fashion/product/front/6.jpg" class="blur-up lazyload" alt="">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <p class="m-0">#125021</p>
-                                            </td>
-                                            <td>
-                                                <p class="fs-6 m-0">Men's Sweatshirt</p>
-                                            </td>
-                                            <td>
-                                                <p class="danger-button btn btn-sm">Canceled</p>
-                                            </td>
-                                            <td>
-                                                <p class="theme-color fs-6">$49.54</p>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>
@@ -326,7 +212,7 @@
 
                             <div class="box-head mt-lg-5 mt-3">
                                 <h3>Login Details</h3>
-                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#resetEmail">Edit</a>
+                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a>
                             </div>
 
                             <ul class="dash-profile">
@@ -350,6 +236,86 @@
                             </ul>
                         </div>
 
+                        <!--Change Password Modal -->
+                        <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title p-3 fs-4" id="changePasswordModalLabel"><b>Change Password</b></h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="changePassword" method="POST" action="{{ route('change.password') }}">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="current_password" class="form-label">Current Password</label>
+                                                <input type="password" name="current_password" class="form-control" required id="current_password" maxlength="50">
+                                                @if ($errors->has('current_password'))
+                                                    <div class="text-danger">{{ $errors->first('current_password') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="new_password" class="form-label">New Password</label>
+                                                <input type="password" name="new_password" class="form-control" required id="new_password" maxlength="50">
+                                                @if ($errors->has('new_password'))
+                                                    <div class="text-danger">{{ $errors->first('new_password') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
+                                                <input type="password" name="new_password_confirmation" class="form-control" required id="new_password_confirmation" maxlength="50">
+                                                @if ($errors->has('new_password_confirmation'))
+                                                    <div class="text-danger">{{ $errors->first('new_password_confirmation') }}</div>
+                                                @endif
+                                            </div>
+
+                                            <div class="flex items-center justify-start mb-3">
+                                                <input type="checkbox" id="show-password" class="h-4 w-4">
+                                                <label for="show-password" class="ml-2 text-sm text-gray-700">Show Password</label>
+                                            </div>
+
+                                            <button type="submit" id="submitButton" class="btn btn-primary rounded">
+                                                Change Password
+                                                <span id="loadingSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                                            </button>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal for Editing Profile -->
+                        <div class="modal fade" id="resetEmail" tabindex="-1" aria-labelledby="resetEmailLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title p-3 fs-4" id="resetEmailLabel"><b>Edit Profile</b> </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        {{-- <form method="POST" action="{{ route('profile.update') }}">
+                                            @csrf
+                                            @method('PUT') <!-- Use PUT for updating resources --> --}}
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Full Name</label>
+                                                <input type="text" name="name" class="form-control" value="{{ auth()->user()->name }}" required>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Phone</label>
+                                                <input type="text" name="phone" class="form-control" value="{{ auth()->user()->phone }}" required>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary rounded">Save Changes</button>
+                                        {{-- </form> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="tab-pane fade dashboard-security dashboard" id="security">
                             <div class="box-head">
                                 <h3>Delete Your Account</h3>
@@ -371,9 +337,11 @@
 
                                 <p class="font-light mb-4">If you understand and agree to the above statement, and would
                                     still like to delete your account, than click below</p>
-
-                                <button class="btn btn-solid-default btn-sm fw-bold rounded" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Your
-                                    Account</button>
+                                    <form id="deleteAccountForm" method="POST" action="{{ route('account.delete') }}">
+                                        @csrf
+                                        @method('DELETE') <!-- Use DELETE for deleting resources -->
+                                        <button type="submit" class="btn btn-solid-default btn-sm fw-bold rounded">Delete Your Account</button>
+                                    </form>
                             </div>
                         </div>
                     </div>
@@ -382,4 +350,142 @@
         </div>
     </section>
     <!-- user dashboard section end -->
+
+    <script>
+        document.getElementById('show-password').addEventListener('change', function() {
+            const passwordFields = [
+                document.getElementById('current_password'),
+                document.getElementById('new_password'),
+                document.getElementById('new_password_confirmation')
+            ];
+            passwordFields.forEach(field => {
+                field.type = this.checked ? 'text' : 'password';
+            });
+        });
+
+        document.getElementById('changePassword').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Client-side validation
+            const newPassword = document.getElementById('new_password').value;
+            const newPasswordConfirm = document.getElementById('new_password_confirmation').value;
+
+            if (newPassword !== newPasswordConfirm) {
+                return Swal.fire({
+                    title: 'Error!',
+                    text: 'New passwords do not match.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+
+            const formData = new FormData(this);
+            const submitButton = document.getElementById('submitButton');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            submitButton.disabled = true;
+            loadingSpinner.style.display = 'inline-block';
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token
+                }
+            })
+            .then(response => {
+                // Re-enable the button and hide the loading spinner
+                submitButton.disabled = false;
+                loadingSpinner.style.display = 'none';
+                if (!response.ok) {
+                    return response.json().then(err => {
+                        throw new Error(err.error);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: data.success,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    location.reload(); // Reload the page after confirming
+                });
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                submitButton.disabled = false; // Re-enable the button
+                loadingSpinner.style.display = 'none'; // Hide the spinner
+            });
+        });
+
+
+        //Deleting Account
+        document.getElementById('deleteAccountForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This action cannot be undone!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formData = new FormData(this);
+                const submitButton = this.querySelector('button[type="submit"]');
+
+                submitButton.disabled = true; // Disable the button to prevent multiple submissions
+
+                fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token
+                    }
+                })
+                .then(response => {
+                    submitButton.disabled = false; // Re-enable the button
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw new Error(err.error);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    Swal.fire({
+                        title: 'Deleted!',
+                        text: data.success,
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        location.reload(); // Optionally reload the page after deletion
+                    });
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: error.message,
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                    submitButton.disabled = false; // Re-enable the button
+                });
+            }
+        });
+    });
+    </script>
+
+
+
+
 @endsection

@@ -148,61 +148,50 @@
 
                                 <div id="selectSize" class="addeffect-section product-description border-product">
                                     @if ($product->customizable == false)
-                                    <form method="POST" action="{{ route('addToCart', $product->id) }}">
-                                        @csrf
-                                    <h6 class="product-title product-title-2 d-block">quantity</h6>
+                                        <form method="POST" action="{{ route('addToCart', $product->id) }}">
+                                            @csrf
+                                            <h6 class="product-title product-title-2 d-block">Quantity</h6>
+                                            <div class="qty-box">
+                                                <div class="input-group">
+                                                    <span class="input-group-prepend">
+                                                        <button type="button" class="btn quantity-left-minus" onclick="updateQuantity()" data-type="minus">
+                                                            <i class="fas fa-minus"></i>
+                                                        </button>
+                                                    </span>
+                                                    <input type="text" name="quantity" id="quantity" class="form-control input-number" value="1">
+                                                    <span class="input-group-prepend">
+                                                        <button type="button" class="btn quantity-right-plus" onclick="updateQuantity()" data-type="plus">
+                                                            <i class="fas fa-plus"></i>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </div>
 
-                                    <div class="qty-box">
-                                        <div class="input-group">
-                                            <span class="input-group-prepend">
-                                                <button type="button" class="btn quantity-left-minus"
-                                                    onclick="updateQuantity()" data-type="minus" data-field="">
-                                                    <i class="fas fa-minus"></i>
+                                            <div class="product-buttons">
+                                                <button type="submit" class="btn btn-solid hover-solid btn-animation mt-4">
+                                                    <i class="fa fa-shopping-cart"></i> <span>Add To Cart</span>
                                                 </button>
-                                            </span>
-                                            <input type="text" name="quantity" id="quantity"
-                                                class="form-control input-number" value="1">
-                                            <span class="input-group-prepend">
-                                                <button type="button" class="btn quantity-right-plus"
-                                                    onclick="updateQuantity()" data-type="plus" data-field="">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="product-buttons">
-                                        <!-- Include your product details here -->
-
-                                        <button type="submit" class="btn btn-solid hover-solid btn-animation">
-                                            <i class="fa fa-shopping-cart"></i> <span>Add To Cart</span>
-                                        </button>
-                                    </form>
-                                </div>
+                                            </div>
+                                        </form>
                                     @else
-                                    <div class="mb-4">
-                                        <p class="text-base">You can create a product that truly reflects your style and personality!</p>
-                                    </div>
-                                <div class="product-buttons">
-                                    <button >
-                                        <a class="btn btn-solid hover-solid btn-animation" href="{{route('customize', $product->id)}}" >
-                                        <i class="bi bi-palette"></i> <span>Customize</span>
-                                        </a>
-                                    </button>
+                                        <div class="mb-4">
+                                            <p class="text-base">You can create a product that truly reflects your style and personality!</p>
+                                        </div>
+                                        <div class="product-buttons">
+                                            <a class="btn btn-solid hover-solid btn-animation" href="{{ route('customize', $product->id) }}">
+                                                <i class="bi bi-palette"></i> <span>Customize</span>
+                                            </a>
+                                        </div>
                                     @endif
                                 </div>
 
-
-
                                 <div class="mt-2 mt-md-3 border-product">
-                                    <h6 class="product-title hurry-title d-block">Hurry Up!<span>{{$product->quantity}}</span> left in
-                                        stock</h6>
+                                    <h6 class="product-title hurry-title d-block">Hurry Up! <span>{{ $product->quantity }}</span> left in stock</h6>
                                     <div class="progress">
                                         <div class="progress-bar" role="progressbar" style="width: 78%"></div>
                                     </div>
-
                                 </div>
+
 
 
                             </div>

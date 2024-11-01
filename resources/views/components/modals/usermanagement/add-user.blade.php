@@ -6,7 +6,8 @@
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <i class="bi bi-tag text-gray-500"></i>
             </div>
-            <input type="search" id="search"  name="search" "
+            <input type="search" id="search"  name="search"
+                value="{{ request('search') }}"
                 class="block w-full pl-10 pr-5 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-sm transition duration-150 ease-in-out hover:border-blue-400"
                 placeholder="SEARCH" />
                 <button type="submit" class="absolute right-0 top-0 mt-2 mr-4">
@@ -99,8 +100,8 @@
 
                         <!-- Description -->
                         {{-- <div class="col-span-2">
-                            <x-input-label for="description" :value="__('Tell About Yourself')" class="text-gray-700 font-semibold" />
-                            <textarea name="description" id="description" required placeholder="Description" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description') }}</textarea>
+                            <x-input-label for="description" :value="__('Tell us About Yourself')" class="text-gray-700 font-semibold" />
+                            <textarea name="description" id="description"  placeholder="Description" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description') }}</textarea>
                             <x-input-error :messages="$errors->get('description')" class="text-red-500 text-sm mt-2" />
                         </div> --}}
 

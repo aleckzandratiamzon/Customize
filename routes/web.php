@@ -125,10 +125,10 @@ Route::controller(ProductController::class)->prefix('products')->group(function 
         Route::get('products/sold/index', [ProductController::class, 'listSoldProducts'])->name('products.sold.index');
     });
 });
-// Route::post('/save-image', [ProductController::class, 'storingcustom'])->name('image.save');
 
+
+// Customize Image
 Route::post('/save-canvas-image', [CustomizeImageController::class, 'saveCanvasImage']);
-
 Route::post('/check-existing-cart-item', [CustomizeImageController::class, 'checkExistingCartItem']);
 
 
@@ -226,8 +226,9 @@ Route::get('/thank-you', function () {
     return view('thank-you');
 })->name('thankyou');
 
-Route::post('/save-image', [ProductController::class, 'saveImage'])->name('save.image');
 Route::get('cart/count', [CartController::class, 'cartCount'])->name('cart.count');
+
+Route::post('/change-password', [AuthController::class, 'changePassword'])->name('change.password');
 
 // ----------------------------- End Of Route Back Log -----------------------//
 // });

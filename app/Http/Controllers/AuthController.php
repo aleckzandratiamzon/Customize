@@ -207,4 +207,44 @@ class AuthController extends Controller
 
         return view('new-password');
     }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed', // This checks if new_password matches new_password_confirmation
+        ]);
+
+        $user = Auth::user();
+
+        // Check if the current password is correct
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json(['error' => 'Current password is incorrect.'], 400);
+        }
+
+        // Update the password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json(['success' => 'Password changed successfully!']);
+    }
+
+    public function destroy(Request $request)
+{
+    // Get the authenticated user
+    $user = Auth::user();
+
+    // Perform any cleanup if necessary (e.g., deleting related data)
+
+    // Delete the user
+    $user->delete();
+
+    // Optionally, log the user out
+    Auth::logout();
+
+    // Return a success response
+    return response()->json(['success' => 'Your account has been deleted successfully.']);
+}
+
+
 }

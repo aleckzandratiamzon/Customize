@@ -7,6 +7,7 @@
                     <i class="bi bi-tag text-gray-500"></i>
                 </div>
                 <input type="search" id="search" name="search"
+                    value="{{ request('search') }}"
                     class="block w-full pl-10 pr-5 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-sm transition duration-150 ease-in-out hover:border-blue-400"
                     placeholder="SEARCH" />
                 <button type="submit" class="absolute right-0 top-0 mt-2 mr-4">
